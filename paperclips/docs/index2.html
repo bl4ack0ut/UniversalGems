@@ -161,7 +161,7 @@
             
         <span id = "wireDroneRebootToolTip" class = "toolTipText3">0</span>    
           
-        <button class = "button2" id = "btnWireDroneReboot" onclick="wireDroneReboot()">&nbsp Disassemble All &nbsp</button>
+        <button class = "button2" id = "btnWireDroneReboot" onclick="wireDroneReboot()">&nbsp Reclaim All &nbsp</button>
             
         </div>    
         <br />    
@@ -172,8 +172,8 @@
             
         <div id = "droneDivSpace">
             
-        Harvester Drones: <span id = "harvesterLevelSpace">0</span><br />
-        Wire Drones: <span id = "wireDroneLevelSpace">0</span><br /><br /> 
+        Assembly Drones: <span id = "harvesterLevelSpace">0</span><br />
+        Debris Drones: <span id = "wireDroneLevelSpace">0</span><br /><br /> 
         
         </div>     
             
@@ -181,7 +181,7 @@
             
         <div id="spaceDiv">
             
-        <b>Space Exploration</b><br />
+        <b>Galactic Exploration</b><br />
         <hr>  
         
         <span id="colonizedDisplay">0</span>% of universe explored<br />
@@ -190,7 +190,7 @@
         <div id = "probeDiv">
         <p class = "engineText5">
         <button class = "button2" id = "btnMakeProbe"
-        onclick="makeProbe()">Launch Probe</button><br />
+        onclick="makeProbe()">Launch Arbiter</button><br />
         Cost: <span id="probeCostDisplay">0</span> clips<br />
         <br />
         </div>   
@@ -199,8 +199,8 @@
         Descendents: <span id="probesBornDisplay">0</span><br />  
         <br />
             
-        <div id = "hazardBodyCount">Lost to hazards: (<span id="probesLostHazardsDisplay">0</span>)<br /></div>
-        <div id = "driftBodyCount">Lost to value drift: (<span id="probesLostDriftDisplay">0</span>)<br /></div>
+        <div id = "hazardBodyCount">Lost to collisions: (<span id="probesLostHazardsDisplay">0</span>)<br /></div>
+        <div id = "driftBodyCount">Lost to defection: (<span id="probesLostDriftDisplay">0</span>)<br /></div>
         <div id = "combatBodyCount">Lost in combat: (<span id="probesLostCombatDisplay">0</span>)<br /></div>     
         
         <hr class = "short">
@@ -210,7 +210,7 @@
             
         <div id = "drifterDiv">
         Drifters Killed: <span id="driftersKilled">0</span><br />
-        Drifters: <span id="drifterCount">0</span><br />      
+        Defectors: <span id="drifterCount">0</span><br />      
         </div>    
             
         </div>    
@@ -225,11 +225,11 @@
         Available Credits: $ <span id="funds">0</span><br />
         <div id="revPerSecDiv">  
            
-        Avg. Rev. per sec: $ <span id="avgRev">0</span><br />
+        Avg. Creds. per sec: $ <span id="avgRev">0</span><br />
         Avg. Gems Sold per sec: <span id="avgSales">0</span><br />    
             
         </div>  
-        Unsold Supply: <span id="unsoldClips">0</span><br /> 
+        Unsold Surplus: <span id="unsoldClips">0</span><br /> 
             
         <button class = "button2" id = "btnLowerPrice"
         onclick="lowerPrice()">lower</button>
@@ -295,12 +295,12 @@
         <button id ="load2Button" onclick="load2()">LOAD SLOT 2</button><br />    
         <button id ="resetButton" onclick="reset()">RESET ALL PROGRESS</button><br />       
 
-        <button id ="freeClipsButton" onclick="cheatClips()">Free Clips</button><br />    
-        <button id ="freeMoneyButton" onclick="cheatMoney()">Free Money</button><br />
-        <button id ="freeTrustButton" onclick="cheatTrust()">Free Trust</button><br />        
-        <button id ="freeOpsButton" onclick="cheatOps()">Free Ops</button><br />
+        <button id ="freeClipsButton" onclick="cheatClips()">Free Gems</button><br />    
+        <button id ="freeMoneyButton" onclick="cheatMoney()">Free Credits</button><br />
+        <button id ="freeTrustButton" onclick="cheatTrust()">Free Valor</button><br />        
+        <button id ="freeOpsButton" onclick="cheatOps()">Free Hash</button><br />
         <button id ="freeCreatButton" onclick="cheatCreat()">Free Creativity</button><br />
-        <button id ="freeYomiButton" onclick="cheatYomi()">Free Yomi</button><br />    
+        <button id ="freeYomiButton" onclick="cheatYomi()">Free Intel</button><br />    
         <button id ="resetPrestige" onclick="resetPrestige()">Reset Prestige</button><br />     
             
         <button id ="destroyAllHumansButton" onclick="cheatHypno()">Destroy all Humans</button><br />    
@@ -326,13 +326,13 @@
         <hr>
             
         <div id="trustDiv">    
-        Trust: <span id="trust">2</span><br />
-        +1 Trust at: <span id="nextTrust">1000</span> clips<br />    
+        Valor: <span id="trust">2</span><br />
+        +1 Valor at: <span id="nextTrust">1000</span> clips<br />    
         <br />
         </div>
             
         <div id="swarmGiftDiv">    
-        Swarm Gifts: <span id="swarmGifts">0</span><br /> 
+        Rift Enlightenment: <span id="swarmGifts">0</span><br /> 
         </div>    
          
             
@@ -351,7 +351,7 @@
         <br />  
             
         <br />
-        Operations: <span id="operations">0</span> / <span id="maxOps">1,000</span><br />
+        Hashrate: <span id="operations">0</span> / <span id="maxOps">1,000</span><br />
        
         <div id = "creativityDiv">
             
@@ -366,36 +366,36 @@
         <b>Swarm Computing</b><br />
         Drones: <span id="swarmSize">0</span><br />   
         <div id ="swarmStatusDiv">Status: <span id="swarmStatus">x </span></div>
-        <div id="giftTimer">Next gift in <span id="giftCountdown">17 seconds</span></div> 
+        <div id="giftTimer">Next Enlightenment in <span id="giftCountdown">17 seconds</span></div> 
             
-        <div id="feedButtonDiv"><button class = "button2" id = "btnFeedSwarm" onclick = "feedSwarm()">Feed the Swarm</button> <br />   
-        Cost: <span id="swarmFeedCost">0</span> MWs</div>
+        <div id="feedButtonDiv"><button class = "button2" id = "btnFeedSwarm" onclick = "feedSwarm()">Feed the Rift</button> <br />   
+        Cost: <span id="swarmFeedCost">0</span> KWs</div>
         
-        <div id="teachButtonDiv"><button class = "button2" id = "btnTeachSwarm" onclick = "teachSwarm()">Teach the Swarm</button><br />   
-        Cost: <span id="swarmFeedCost">0</span> MWs</div>  
+        <div id="teachButtonDiv"><button class = "button2" id = "btnTeachSwarm" onclick = "teachSwarm()">Teach the Rift</button><br />   
+        Cost: <span id="swarmFeedCost">0</span> KWs</div>  
             
-        <div id="entertainButtonDiv"><button class = "button2" id = "btnEntertainSwarm" onclick = "entertainSwarm()">Entertain the Swarm</button><br />   
+        <div id="entertainButtonDiv"><button class = "button2" id = "btnEntertainSwarm" onclick = "entertainSwarm()">Entertain the Rift</button><br />   
         Cost: <span id="swarmEntertainCost">0</span> creat</div>  
             
-        <div id="cladButtonDiv"><button class = "button2" id = "btnCladSwarm" onclick = "cladSwarm()">Clad the Swarm</button><br />   
-        Cost: <span id="swarmFeedCost">0</span> MWs</div>  
+        <div id="cladButtonDiv"><button class = "button2" id = "btnCladSwarm" onclick = "cladSwarm()">Clad the Rift</button><br />   
+        Cost: <span id="swarmFeedCost">0</span> KWs</div>  
         
-        <div id="synchButtonDiv"><button class = "button2" id = "btnSynchSwarm" onclick = "synchSwarm()">Synchronize the Swarm</button><br />   
-        Cost: <span id="swarmFeedCost">5,000</span> yomi</div>     
+        <div id="synchButtonDiv"><button class = "button2" id = "btnSynchSwarm" onclick = "synchSwarm()">Synchronize the Rift</button><br />   
+        Cost: <span id="swarmFeedCost">5,000</span> intel</div>     
         </div>  
             
         <div id = "swarmSliderDiv">    
-        <div id = "sliderLabelWork">Work</div>    
+        <div id = "sliderLabelWork">Expand</div>    
         <div id = "swarmSlider">
         <input type="range" min="0" max="200" value="0" class="slider" id="slider">
             
         </div>  
-        <div id = "sliderLabelThink">Think</div>
+        <div id = "sliderLabelThink">Charge</div>
         </div>    
             
         <div class = "qEngine" id = "qComputing">
             
-        <b>Quantum Computing</b><br />
+        <b>Stellar Computing</b><br />
             
         <div class = "qChip" id = "qChip0"> </div>      
         <div class = "qChip" id = "qChip1"> </div> 
@@ -438,12 +438,12 @@
         <div class = "engine" id="investmentEngine">
         
         <p class = engineText>    
-                <b>Investments</b>
+                <b>Trade Routes</b>
 
                 <select id = "investStrat">
-                    <option value="low">Low Risk</option>
-                    <option value="med">Med Risk</option>
-                    <option value="hi">High Risk</option>
+                    <option value="low">Drone</option>
+                    <option value="med">Council</option>
+                    <option value="hi">Imperial</option>
                 </select>
 
             <br />
@@ -458,8 +458,8 @@
             </div>
             <div id = investmentDiv2>
             <p class = "clean">
-            Cash: $<span id="investmentBankroll">0</span><br />
-            Stocks: $<span id="secValue">0</span><br />
+            Credits: $<span id="investmentBankroll">0</span><br />
+            Routes: $<span id="secValue">0</span><br />
             <b>Total: $<span id="portValue">0</span></b><br />
             </p>
             </div>    
@@ -467,9 +467,9 @@
             <table class="table1">
                 
             <tr>
-                <th>Stock</th>
+                <th>Route</th>
                 <th>Amt.</th>
-                <th>Price</th>
+                <th>Cost</th>
                 <th>Total</th>
                 <th>P/L</th>
             </tr>    
@@ -517,16 +517,16 @@
           
         <div id = "investmentEngineUpgrade">    
         <button class = "button2" id = "btnImproveInvestments"
-        onclick="investUpgrade()">Upgrade Investment Engine</button><span class = "engineText7"> Level: </span><span class = "engineText7" id = "investmentLevel">0</span><br />
+        onclick="investUpgrade()">Upgrade Trade Engine</button><span class = "engineText7"> Level: </span><span class = "engineText7" id = "investmentLevel">0</span><br />
         <p class = "engineText8">Cost: <span id="investUpgradeCost">100</span> Yomi</p>  
         </div>       
 
         <div class=engine2 id="strategyEngine">
         <p class=engineText>
-           <b>Strategic Modeling</b>
+           <b>Simulation Modeling</b>
             
            <select id = "stratPicker">
-                    <option value="10">Pick a Strat</option>
+                    <option value="10">Pick a Sim</option>
                     <option value="0">RANDOM</option>
                 </select>      
         <button class = "button2" id = "btnRunTournament"
@@ -534,7 +534,7 @@
         
         <div id = "tournamentLabel">   
         <p class="clean2">
-        <span id="tourneyDisplay">Pick strategy, run tournament, gain yomi</span><br />   
+        <span id="tourneyDisplay">Pick simulation, run tournament, gain intel</span><br />   
         </p>
         </div> 
             
@@ -614,7 +614,7 @@
         
         </div>    
             
-        <p class="engineText4">Yomi: <span id="yomiDisplay">0</span>
+        <p class="engineText4">Intel: <span id="yomiDisplay">0</span>
         </p>
         </div> 
                 
@@ -649,13 +649,13 @@
     
         <p class="clean2">
 
-            <span id="battleName">Drifter Attack 1</span></p><br />
+            <span id="battleName">Defector Attack 1</span></p><br />
             
         <div id = "victoryDiv">
            
         <span id="battleResult">VICTORY</span>
         <p class="clean2">    
-        <span id="battleResultSign">+</span><span id="honorAmount">200</span> honor
+        <span id="battleResultSign">+</span><span id="honorAmount">200</span> influence
         </p>    
             
         </div>   
@@ -668,7 +668,7 @@
         </div>
             
         <div id = "honorDiv">
-        <p class="engineText4">Honor: <span id="honorDisplay">0</span></p>
+        <p class="engineText4">Influence: <span id="honorDisplay">0</span></p>
         </div>    
             
 <!--        POWER-->
@@ -687,7 +687,7 @@
         Production: <span id="powerProductionRate">0</span> MWs<br />    
         <p class = "engineText5">
         <button class = "button2" id = "btnMakeFarm"
-        onclick="makeFarm(1)">Solar Farm</button> <span class = "engineText6" id="farmLevel">0</span></p>
+        onclick="makeFarm(1)">Quasar Farm</button> <span class = "engineText6" id="farmLevel">0</span></p>
             
         <div id = "farmMultiButtons">    
             
@@ -701,19 +701,19 @@
             
         <span id = "farmRebootToolTip" class = "toolTipText3">0</span>    
            
-        <button class = "button2" id = "btnFarmReboot" onclick="farmReboot()">&nbsp Disassemble All &nbsp</button>
+        <button class = "button2" id = "btnFarmReboot" onclick="farmReboot()">&nbsp Reclaim All &nbsp</button>
             
         </div>
             
         </br> 
             
-        Cost: <span id="farmCost">0</span> clips<br />
+        Cost: <span id="farmCost">0</span> gems<br />
         <br />
             
-        Storage: <span id="storedPower">0</span> / <span id="maxStorage">0</span> MW-seconds<br />
+        Storage: <span id="storedPower">0</span> / <span id="maxStorage">0</span> KW-seconds<br />
         <p class = "engineText5">
         <button class = "button2" id = "btnMakeBattery"
-        onclick="makeBattery(1)">Battery Tower</button> <span class = "engineText6" id="batteryLevel">0</span></p>
+        onclick="makeBattery(1)">Energy Dynamo</button> <span class = "engineText6" id="batteryLevel">0</span></p>
             
             
         <div id = "batteryMultiButtons">    
@@ -734,7 +734,7 @@
         
         </br>     
             
-        Cost: <span id="batteryCost">0</span> clips<br />
+        Cost: <span id="batteryCost">0</span> gems<br />
         <br />     
                       
         </div>               
@@ -746,7 +746,7 @@
             
         <p class=engineText>
             
-            <b>Von Neumann Probe Design</b><br />
+            <b>Graviton Labs Arbiter Design</b><br />
         Trust:
         <span id="probeTrustUsedDisplay">0</span> / <span id="probeTrustDisplay">0</span>
         (<span id="maxTrustDisplay">0</span> Max)<br /> 
@@ -776,7 +776,7 @@
             
         <div class = "toolTip2">     
          
-        <span class = "toolTipText2">Rate at which probes gain access to new matter</span>  
+        <span class = "toolTipText2">Rate at which arbiters gain access to new materials</span>  
             
         Exploration: <span id="probeNavDisplay">0</span>
             
@@ -789,7 +789,7 @@
             
         <div class = "toolTip2">     
          
-        <span class = "toolTipText2">Rate at which probes generate more probes (each new probe costs 100 quadrillion clips) </span>
+        <span class = "toolTipText2">Rate at which arbiters self clone (each new arbiter costs 100 quadrillion gems) </span>
             
         Self-Replication: <span id="probeRepDisplay">0</span>
             
@@ -815,7 +815,7 @@
             
         <div class = "toolTip2">     
          
-        <span class = "toolTipText2">Rate at which probes build factories (each new factory costs 100 million clips)</span>
+        <span class = "toolTipText2">Rate at which arbiters build factories (each new factory costs 100 million clips)</span>
             
         Factory Production: <span id="probeFacDisplay">0</span>
             
@@ -828,9 +828,9 @@
             
          <div class = "toolTip2">     
          
-        <span class = "toolTipText2">Rate at which probes spawn Harvester Drones (each new drone costs 2 million clips)</span>
+        <span class = "toolTipText2">Rate at which arbiters spawn Assembly Drones (each new drone costs 2 million clips)</span>
             
-        Harvester Drone Production: <span id="probeHarvDisplay">0</span>
+        Assembly Drone Production: <span id="probeHarvDisplay">0</span>
              
             </div>     <br />   
             
@@ -841,9 +841,9 @@
             
         <div class = "toolTip2">     
          
-        <span class = "toolTipText2">Rate at which probes spawn Wire Drones (each new drone costs 2 million clips)</span>
+        <span class = "toolTipText2">Rate at which arbiters spawn Debris Drones (each new drone costs 2 million clips)</span>
             
-        Wire Drone Production: <span id="probeWireDisplay">0</span>
+        Debris Drone Production: <span id="probeWireDisplay">0</span>
             
             </div>    <br />  
                
@@ -871,13 +871,13 @@
                 
         <div class = enginetext1 id = "increaseProbeTrustDiv">    
         <button class = "button2" id = "btnIncreaseProbeTrust"
-        onclick="increaseProbeTrust()">Increase Probe Trust</button><br />
-        <p class = "engineText8">Cost: <span id="probeTrustCostDisplay">0</span> yomi</p>  
+        onclick="increaseProbeTrust()">Increase Arbiter Honor</button><br />
+        <p class = "engineText8">Cost: <span id="probeTrustCostDisplay">0</span> Intel</p>  
         </div>  
             
         <div class = enginetext1 id = "increaseMaxTrustDiv">    
         <button class = "button2" id = "btnIncreaseMaxTrust"
-        onclick="increaseMaxTrust()">Increase Max Trust</button><br />
+        onclick="increaseMaxTrust()">Increase Max Honor</button><br />
         <p class = "engineText8">Cost: <span id="maxTrustCostDisplay">91,117.99</span> honor</p>  
         </div>    
             
