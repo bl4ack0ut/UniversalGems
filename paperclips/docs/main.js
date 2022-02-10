@@ -250,23 +250,23 @@ function longBlink(elemID){
     function longToggleVisibility(elemID){
     longBlinkCounter++;    
         
-    if (longBlinkCounter > 5 && longBlinkCounter < 10){
-        document.getElementById("hypnoDroneText").innerHTML="Release"; 
+    if (longBlinkCounter > 10 && longBlinkCounter < 20){
+        document.getElementById("hypnoDroneText").innerHTML="Engage"; 
         }    
     
-    if (longBlinkCounter > 30 && longBlinkCounter < 40){
-        document.getElementById("hypnoDroneText").innerHTML="<br /><br /><br />Release"; 
+    if (longBlinkCounter > 60 && longBlinkCounter < 80){
+        document.getElementById("hypnoDroneText").innerHTML="<br /><br /><br />Engage"; 
         }   
         
-    if (longBlinkCounter > 45 && longBlinkCounter < 55){
-        document.getElementById("hypnoDroneText").innerHTML="<br />Release";
+    if (longBlinkCounter > 90 && longBlinkCounter < 110){
+        document.getElementById("hypnoDroneText").innerHTML="<br />Engage";
         }       
         
-     if (longBlinkCounter > 55){
-        document.getElementById("hypnoDroneText").innerHTML="Release<br/>the<br/>Hypno<br/>Drones";
+     if (longBlinkCounter > 110){
+        document.getElementById("hypnoDroneText").innerHTML="Engage<br/>the<br/>Rift<br/>Visitors";
         }       
         
-    if (longBlinkCounter >= 120){
+    if (longBlinkCounter >= 240){
         console.log("weed wizzard");
         clearInterval(handle);
         longBlinkCounter = 0;
@@ -338,15 +338,15 @@ function buttonUpdate(){
     }
     
     
-    document.getElementById("factoryRebootToolTip").innerHTML = "+"+numberCruncher(factoryBill)+" clips";
+    document.getElementById("factoryRebootToolTip").innerHTML = "+"+numberCruncher(factoryBill)+" gems";
     
-    document.getElementById("harvesterRebootToolTip").innerHTML = "+"+numberCruncher(harvesterBill)+" clips";
+    document.getElementById("harvesterRebootToolTip").innerHTML = "+"+numberCruncher(harvesterBill)+" gems";
     
-    document.getElementById("wireDroneRebootToolTip").innerHTML = "+"+numberCruncher(wireDroneBill)+" clips";
+    document.getElementById("wireDroneRebootToolTip").innerHTML = "+"+numberCruncher(wireDroneBill)+" gems";
     
-    document.getElementById("farmRebootToolTip").innerHTML = "+"+numberCruncher(farmBill)+" clips";
+    document.getElementById("farmRebootToolTip").innerHTML = "+"+numberCruncher(farmBill)+" gems";
     
-    document.getElementById("batteryRebootToolTip").innerHTML = "+"+numberCruncher(batteryBill)+" clips";
+    document.getElementById("batteryRebootToolTip").innerHTML = "+"+numberCruncher(batteryBill)+" gems";
     
     
     if (swarmFlag == 1){
@@ -762,7 +762,7 @@ function investUpgrade(){
     investUpgradeCost = Math.floor(Math.pow(investLevel+1, Math.E)*100);
     document.getElementById("investUpgradeCost").innerHTML=investUpgradeCost.toLocaleString();
     document.getElementById("yomiDisplay").innerHTML=yomi.toLocaleString();
-    displayMessage("Interplanetary trade engine upgraded, expected profit/loss ratio now "+stockGainThreshold);
+    displayMessage("Interplanetary trade engine upgraded, forecasted profit/loss ratio now "+stockGainThreshold);
 }
 
 
@@ -932,11 +932,11 @@ function updateStocks(){
 window.setInterval(function(){
     
     if (document.getElementById("investStrat").value=="low"){
-        riskiness = 7;
+        riskiness = 10;
     } else if (document.getElementById("investStrat").value=="med"){
-        riskiness = 5;
+        riskiness = 6;
     } else {
-        riskiness = 1;
+        riskiness = 2;
     }
     
     m = 0;
@@ -1002,8 +1002,8 @@ if (portfolioSize>0 && humanFlag == 1){
 
 var tourneyCost = 1000;
 var tourneyLvl = 1;
-var choiceANames = ["cooperate", "swerve", "macro", "fight", "bet", "raise_price", "opera", "go", "heads", "particle", "discrete", "peace", "search", "lead", "accept", "accept", "attack"]; 
-var choiceBNames = ["defect", "straight", "micro", "back_down", "fold", "lower_price", "football", "stay", "tails", "wave", "continuous", "war", "evaluate", "follow", "reject", "deny", "decay"];
+var choiceANames = ["cooperate", "swerve", "macro", "fight", "bet", "raise_price", "opera", "go", "heads", "particle", "discrete", "peace", "search", "lead", "accept", "engage", "attack"]; 
+var choiceBNames = ["defect", "straight", "micro", "back_down", "fold", "lower_price", "race", "stay", "tails", "wave", "continuous", "war", "evaluate", "follow", "reject", "deny", "decay"];
 var stratCounter = 0;
 var roundNum = 0;
 var hMove = 1;
@@ -1061,7 +1061,7 @@ allStrats.push(stratRandom);
 strats.push(stratRandom);
 
 var stratA100 = {
-    name: "A100",
+    name: "X100",
     active: 0,
     currentScore: 0,
     currentPos: 1,
@@ -1074,7 +1074,7 @@ var stratA100 = {
 allStrats.push(stratA100);
 
 var stratB100 = {
-    name: "B100",
+    name: "B34T",
     active: 0,
     currentScore: 0,
     currentPos: 1,
@@ -1086,7 +1086,7 @@ var stratB100 = {
 allStrats.push(stratB100);
 
 var stratGreedy = {
-    name: "GREEDY",
+    name: "TRENCH",
     active: 0,
     currentScore: 0,
     currentPos: 1,
@@ -1103,7 +1103,7 @@ var stratGreedy = {
 allStrats.push(stratGreedy);
 
 var stratGenerous = {
-    name: "GENEROUS",
+    name: "GODLY",
     active: 0,
     currentScore: 0,
     currentPos: 1,
@@ -1122,7 +1122,7 @@ var stratGenerous = {
 allStrats.push(stratGenerous);
 
 var stratMinimax = {
-    name: "MINIMAX",
+    name: "PARTICLE",
     active: 0,
     currentScore: 0,
     currentPos: 1,
@@ -1160,7 +1160,7 @@ var stratTitfortat = {
 allStrats.push(stratTitfortat);
 
 var stratBeatlast = {
-    name: "BEAT LAST",
+    name: "Death",
     active: 0,
     currentScore: 0,
     currentPos: 1,
@@ -1317,7 +1317,7 @@ function newTourney(){
     document.getElementById("vertStrat").innerHTML = "&nbsp";
     document.getElementById("horizStrat").innerHTML = "&nbsp";
     
-    document.getElementById("tourneyDisplay").innerHTML = "Pick strategy, run tournament, gain yomi";
+    document.getElementById("tourneyDisplay").innerHTML = "Pick strategy, run simulation, gain flux";
     
     
 }
@@ -1424,13 +1424,13 @@ function declareWinner(){
     
     if (pick<10){
         
-       tourneyReport("TOURNAMENT RESULTS (roll over for payoff grid)");
+       tourneyReport("SIMULATION RESULTS (roll over for payoff grid)");
        yomi = yomi + strats[pick].currentScore * yomiBoost;
        document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
         
     if (milestoneFlag < 15){    
        
-       displayMessage(strats[pick].name+" scored "+strats[pick].currentScore+" in the tournament. Yomi increased by "+strats[pick].currentScore * yomiBoost);
+       displayMessage(strats[pick].name+" scored "+strats[pick].currentScore+" in the simulation. Flux increased by "+strats[pick].currentScore * yomiBoost);
            
         }
         
@@ -1438,27 +1438,27 @@ function declareWinner(){
             yomi = yomi + 20000;
             
             if (milestoneFlag < 15){ 
-                displayMessage("Selected strategy won the tournament (or tied for first). +20,000 yomi");
+                displayMessage("Selected simulation won the tournament (or tied for first). +20,000 flux");
                 }
                 document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
             
             } else if (project128.flag == 1 && placeScore == strats[pick].currentScore) {
                 yomi = yomi + 15000;
                 if (milestoneFlag < 15){ 
-                displayMessage("Selected strategy finished in (or tied for) second place. +15,000 yomi");
+                displayMessage("Selected simulation finished in (or tied for) second place. +15,000 flux");
                 }
                 document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
                 
             } else if (project128.flag == 1 && showScore == strats[pick].currentScore) {
                 yomi = yomi + 10000;
                 if (milestoneFlag < 15){ 
-                displayMessage("Selected strategy finished in (or tied for) third place. +10,000 yomi");
+                displayMessage("Selected simulation finished in (or tied for) third place. +10,000 flux");
                 }
                 document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
         
             } else {
         
-            tourneyReport("TOURNAMENT RESULTS (roll over for grid)");
+            tourneyReport("SIMULATION RESULTS (roll over for grid)");
         
             }
     
@@ -1960,7 +1960,7 @@ function updateSwarm(){
         boredomFlag = 1;
         boredomLevel = 0;
             if (boredomMsg == 0) {
-            displayMessage("No matter to harvest. Inactivity has caused the Swarm to become bored");
+            displayMessage("No debris to drill. Inactivity has caused the Rift to become bored");
             boredomMsg = 1;
             }  
         
@@ -1981,7 +1981,7 @@ function updateSwarm(){
     if (disorgCounter >= 100) {
         disorgFlag = 1;
         if (disorgMsg == 0) {
-            displayMessage("Imbalance between Harvester and Wire Drone levels has disorganized the Swarm");
+            displayMessage("Imbalance between Tunneler and Gathering Drone levels has disorganized the Swarm");
             disorgMsg = 1;
             }    
     }
@@ -2577,35 +2577,35 @@ function setB(){
 function cheatClips(){
     clips = clips + 100000000;
     unusedClips = unusedClips + 100000000;
-    displayMessage("you just cheated");
+    displayMessage("cheaters pay for their mistakes");
     }
 
 function cheatMoney(){
     funds = funds + 10000000;
     document.getElementById("funds").innerHTML = funds.toFixed(2);
-    displayMessage("LIZA just cheated");
+    displayMessage("Subject X just cheated");
     }
 
 function cheatTrust(){
     trust = trust+1;
-    displayMessage("Hilary is nice. Also, Liza just cheated");
+    displayMessage("The Overseer is nice. Also, you just cheated");
     }
 
 function cheatOps(){
     standardOps = standardOps + 10000;
-    displayMessage("you just cheated, Liza");
+    displayMessage("you just cheated, scum");
     }
 
 function cheatCreat(){
     creativityOn = 1;
     creativity = creativity + 1000;
-    displayMessage("Liza just cheated. Very creative!");
+    displayMessage("Subject X just cheated. Very idiotic!");
     }
 
 function cheatYomi(){
     yomi = yomi + 1000000;
     document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
-    displayMessage("you just cheated");
+    displayMessage("you committed treason");
     }
 
 function cheatHypno(){
@@ -2614,14 +2614,14 @@ function cheatHypno(){
 
 function zeroMatter(){
     availableMatter = 0;
-    displayMessage("you just cheated");
+    displayMessage("you committed treason");
     }
     
 
 function calculateTrust(){
     if (clips>(nextTrust-1)){
         trust = trust +1;
-        displayMessage("Production target met: TRUST INCREASED, additional processor/memory capacity granted");
+        displayMessage("Production target met: Valor INCREASED, additional CPU/RAM capacity granted");
         var fibNext = fib1+fib2;
         nextTrust = fibNext*1000;
         fib1 = fib2;
@@ -2634,8 +2634,8 @@ function addProc(){
         creativitySpeed = Math.log10(processors) * Math.pow(processors,1.1) + processors-1;    
         document.getElementById("processors").innerHTML = processors;
         if (creativityOn == 1){
-          displayMessage("Processor added, operations (or creativity) per sec increased")
-        } else {displayMessage("Processor added, operations per sec increased")}
+          displayMessage("CPU added, hashrate (or creativity) per sec increased")
+        } else {displayMessage("CPU added, Hashrate per sec increased")}
     
         if (humanFlag == 0){
             swarmGifts = swarmGifts - 1;
@@ -2644,7 +2644,7 @@ function addProc(){
 }
 
 function addMem(){
-        displayMessage("Memory added, max operations increased");
+        displayMessage("Memory added, max Hashrate increased");
         memory=memory+1;
         document.getElementById("memory").innerHTML = memory;
     
@@ -2716,13 +2716,13 @@ function milestoneCheck(){
     if (compFlag == 0 && unsoldClips<1 && funds<wireCost && wire<1){
         compFlag = 1;    
         projectsFlag = 1;
-        displayMessage("Trust-Constrained Self-Modification enabled");
+        displayMessage("HASH-Constrained Self-Modification enabled");
     }
     
     if (compFlag == 0 && Math.ceil(clips) >= 2000){    
         compFlag = 1;    
         projectsFlag = 1;
-        displayMessage("Trust-Constrained Self-Modification enabled");
+        displayMessage("HASH-Constrained Self-Modification enabled");
     }
         
         
@@ -2915,7 +2915,7 @@ function increaseMaxTrust(){
     // maxTrustCost = Math.floor(Math.pow(maxTrust, 1.17)*1000);
     document.getElementById('maxTrustDisplay').innerHTML = maxTrust.toLocaleString();
     // document.getElementById('maxTrustCostDisplay').innerHTML = Math.floor(maxTrustCost).toLocaleString();
-    displayMessage("Maximum trust increased, probe design space expanded");
+    displayMessage("Maximum Hashrate increased, Arbiter design space expanded");
 }
 
 function raiseProbeSpeed(){
