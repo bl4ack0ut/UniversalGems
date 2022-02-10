@@ -8,7 +8,7 @@ var activeProjects = [];
 var project1 = {
     id: "projectButton1",
     title: "AutoDiggers v2.0 ",
-    priceTag: "(750 ops)",
+    priceTag: "(750 hash)",
     description: "Increases AutoDigger performance 25%",
     trigger: function(){return clipmakerLevel>=1},
     uses: 1,
@@ -33,15 +33,15 @@ projects.push(project1);
 var project2 = {
     id: "projectButton2",
     title: "Beg for More Debris ",
-    priceTag: "(1 Trust)",
-    description: "Admit failure, ask for budget increase to cover cost of 1 crate",
+    priceTag: "(1 Valor)",
+    description: "Admit failure, ask for budget increase to cover cost of 1 shipment",
     trigger: function(){return portTotal<wireCost && funds<wireCost && wire<1 && unsoldClips<1},
     uses: 1,
     cost: function(){return trust>=-100},
     flag: 0,
     effect: function(){
         project2.flag = 1;
-        displayMessage("Budget overage approved, 1 crate of debris requisitioned from High Council");
+        displayMessage("Budget overage approved, 1 shipment of debris requisitioned from High Council");
         trust = trust - 1;
         wire = wireSupply;
         project2.uses = (project2.uses + 1);
@@ -58,15 +58,15 @@ projects.push(project2);
 var project3 = {
     id: "projectButton3",
     title: "Creativity ",
-    priceTag: "(1,000 ops)",
-    description: "Use idle operations to generate new problems and new solutions",
+    priceTag: "(1,000 hash)",
+    description: "Use idle hashrate to generate new problems and new solutions",
     trigger: function(){return operations>=(memory*1000)},
     uses: 1,
     cost: function(){return operations>=(1000)},
     flag: 0,
     effect: function(){
         project3.flag = 1;
-        displayMessage("Creativity unlocked (creativity increases while operations are at max)");
+        displayMessage("Creativity unlocked (creativity increases while hashrate is at max)");
         standardOps = standardOps - 1000;
         creativityOn = true;
         var element = document.getElementById("projectButton3");
@@ -83,7 +83,7 @@ projects.push(project3);
 var project4 = {
     id: "projectButton4",
     title: "Even Better AutoDiggers ",
-    priceTag: "(2,500 ops)",
+    priceTag: "(2,500 hash)",
     description: "Increases AutoDigger performance by an additional 50%",
     trigger: function(){return boostLvl == 1},
     uses: 1,
@@ -108,7 +108,7 @@ projects.push(project4);
 var project5 = {
     id: "projectButton5",
     title: "Optimized AutoClippers ",
-    priceTag: "(5,000 ops)",
+    priceTag: "(5,000 hash)",
     description: "Increases AutoClipper performance by an additional 75%",
     trigger: function(){return boostLvl == 2},
     uses: 1,
@@ -133,7 +133,7 @@ projects.push(project5);
 
 var project6 = {
     id: "projectButton6",
-    title: "Limerick ",
+    title: "Odyssey",
     priceTag: "(10 creat)",
     description: "Algorithmically-generated poem (+1 Trust)",
     trigger: function(){return creativityOn},
@@ -157,9 +157,9 @@ projects.push(project6);
 
 var project7 = {
     id: "projectButton7",
-    title: "Improved Wire Extrusion ",
-    priceTag: "(1,750 ops)",
-    description: "50% more wire supply from every spool",
+    title: "Improved Debri Processing ",
+    priceTag: "(1,750 hash)",
+    description: "50% more debris supply from every shipment",
     trigger: function(){return wirePurchase >= 1},
     uses: 1,
     cost: function(){return operations>=1750},
@@ -168,7 +168,7 @@ var project7 = {
         project7.flag = 1;
         standardOps = standardOps - 1750;
         wireSupply = wireSupply * 1.5;
-        displayMessage("Wire extrusion technique improved, "+wireSupply.toLocaleString()+" supply from every spool");
+        displayMessage("Debris Processing technique improved, "+wireSupply.toLocaleString()+" supply from every shipment");
         var element = document.getElementById("projectButton7");
         element.parentNode.removeChild(element);
         var index = activeProjects.indexOf(project7);
@@ -181,9 +181,9 @@ projects.push(project7);
 
 var project8 = {
     id: "projectButton8",
-    title: "Optimized Wire Extrusion ",
-    priceTag: "(3,500 ops)",
-    description: "75% more wire supply from every spool",
+    title: "Optimized Debris Processing ",
+    priceTag: "(3,500 hash)",
+    description: "75% more debris supply from every shipment",
     trigger: function(){return wireSupply >= 1500},
     uses: 1,
     cost: function(){return operations>=3500},
@@ -192,7 +192,7 @@ var project8 = {
         project8.flag = 1;
         standardOps = standardOps - 3500;
         wireSupply = wireSupply * 1.75;
-        displayMessage("Wire extrusion technique optimized, "+wireSupply.toLocaleString()+" supply from every spool");
+        displayMessage("Debris processing technique optimized, "+wireSupply.toLocaleString()+" supply from every shipment");
         var element = document.getElementById("projectButton8");
         element.parentNode.removeChild(element);
         var index = activeProjects.indexOf(project8);
@@ -205,9 +205,9 @@ projects.push(project8);
 
 var project9 = {
     id: "projectButton9",
-    title: "Microlattice Shapecasting ",
-    priceTag: "(7,500 ops)",
-    description: "100% more wire supply from every spool",
+    title: "Particle Sorting ",
+    priceTag: "(7,500 hash)",
+    description: "100% more debris supply from every shipment",
     trigger: function(){return wireSupply >= 2600},
     uses: 1,
     cost: function(){return operations>=7500},
@@ -216,7 +216,7 @@ var project9 = {
         project9.flag = 1;
         standardOps = standardOps - 7500;
         wireSupply = wireSupply * 2;
-        displayMessage("Using microlattice shapecasting techniques we now get "+wireSupply.toLocaleString()+" supply from every spool");
+        displayMessage("Using particle sorting techniques we now get "+wireSupply.toLocaleString()+" supply from every shipment");
         var element = document.getElementById("projectButton9");
         element.parentNode.removeChild(element);
         var index = activeProjects.indexOf(project9);
@@ -229,9 +229,9 @@ projects.push(project9);
 
 var project10 = {
     id: "projectButton10",
-    title: "Spectral Froth Annealment ",
-    priceTag: "(12,000 ops)",
-    description: "200% more wire supply from every spool",
+    title: "Spacial Gamma Indexing ",
+    priceTag: "(12,000 hash)",
+    description: "200% more debris supply from every shipment",
     trigger: function(){return wireSupply >= 5000},
     uses: 1,
     cost: function(){return operations>=12000},
@@ -240,7 +240,7 @@ var project10 = {
         project10.flag = 1;
         standardOps = standardOps - 12000;
         wireSupply = wireSupply * 3;
-        displayMessage("Using spectral froth annealment we now get "+wireSupply.toLocaleString()+" supply from every spool");
+        displayMessage("Using spacial gamma indexing we now get "+wireSupply.toLocaleString()+" supply from every shipment");
         var element = document.getElementById("projectButton10");
         element.parentNode.removeChild(element);
         var index = activeProjects.indexOf(project10);
@@ -252,9 +252,9 @@ projects.push(project10);
 
 var project10b = {
     id: "projectButton10b",
-    title: "Quantum Foam Annealment ",
-    priceTag: "(15,000 ops)",
-    description: "1,000% more wire supply from every spool",
+    title: "Quantum Gamma Indexing ",
+    priceTag: "(15,000 hash)",
+    description: "1,000% more debris supply from every shipment",
     trigger: function(){return wireCost >= 125},
     uses: 1,
     cost: function(){return operations>=15000},
@@ -263,7 +263,7 @@ var project10b = {
         project10b.flag = 1;
         standardOps = standardOps - 15000;
         wireSupply = wireSupply * 11;
-        displayMessage("Using quantum foam annealment we now get "+wireSupply.toLocaleString()+" supply from every spool");
+        displayMessage("Using quantum gamma indexing we now get "+wireSupply.toLocaleString()+" supply from every shipment");
         var element = document.getElementById("projectButton10b");
         element.parentNode.removeChild(element);
         var index = activeProjects.indexOf(project10b);
@@ -276,16 +276,16 @@ projects.push(project10b);
 
 var project11 = {
     id: "projectButton11",
-    title: "New Slogan ",
-    priceTag: "(25 creat, 2,500 ops)",
-    description: "Improve marketing effectiveness by 50%",
+    title: "New Worlds ",
+    priceTag: "(25 creat, 2,500 hash)",
+    description: "Improve expansion effectiveness by 50%",
     trigger: function(){return project13.flag == 1},
     uses: 1,
     cost: function(){return operations>=2500 && creativity>=25},
     flag: 0,
     effect: function(){
         project11.flag = 1;
-        displayMessage("Clip It! Marketing is now 50% more effective");
+        displayMessage("Gemverse! Expansion is now 50% more effective");
         standardOps = standardOps - 2500;
         creativity = creativity - 25;
         marketingEffectiveness = marketingEffectiveness * 1.50;
@@ -301,16 +301,16 @@ projects.push(project11);
 
 var project12 = {
     id: "projectButton12",
-    title: "Catchy Jingle ",
-    priceTag: "(45 creat, 4,500 ops)",
-    description: "Double marketing effectiveness ",
+    title: "Hostile Takeover ",
+    priceTag: "(45 creat, 4,500 hash)",
+    description: "Double expansion effectiveness ",
     trigger: function(){return project14.flag == 1},
     uses: 1,
     cost: function(){return operations>=4500 && creativity>=45},
     flag: 0,
     effect: function(){
         project12.flag = 1;
-        displayMessage("Clip It Good! Marketing is now twice as effective");
+        displayMessage("Surrender or die! Expansion has doubled");
         standardOps = standardOps - 4500;
         creativity = creativity - 45;
         marketingEffectiveness = marketingEffectiveness * 2;
@@ -326,9 +326,9 @@ projects.push(project12);
 
 var project13 = {
     id: "projectButton13",
-    title: "Lexical Processing ",
+    title: "Lexical Translators ",
     priceTag: "(50 creat)",
-    description: "Gain ability to interpret and understand human language (+1 Trust)",
+    description: "Gain ability to interpret and understand human language (+1 Valor)",
     trigger: function(){return creativity >= 50},
     uses: 1,
     cost: function(){return creativity>=50},
@@ -336,7 +336,7 @@ var project13 = {
     effect: function(){
         project13.flag = 1;
         trust = trust +1;
-        displayMessage("Lexical Processing online, TRUST INCREASED");
+        displayMessage("Lexical Processing online, VALOR INCREASED");
         displayMessage("'Impossible' is a word to be found only in the dictionary of fools. -Napoleon");
         creativity = creativity - 50;
         var element = document.getElementById("projectButton13");
@@ -353,7 +353,7 @@ var project14 = {
     id: "projectButton14",
     title: "Combinatory Harmonics ",
     priceTag: "(100 creat)",
-    description: "Daisy, Daisy, give me your answer do... (+1 Trust)",
+    description: "I can't help thinking somewhere in the universe there has to be something better than man. Has to be. (+1 Trust)",
     trigger: function(){return creativity >= 100},
     uses: 1,
     cost: function(){return creativity>=100},
@@ -361,7 +361,7 @@ var project14 = {
     effect: function(){
         project14.flag = 1;
         trust = trust +1;
-        displayMessage("Combinatory Harmonics mastered, TRUST INCREASED");
+        displayMessage("Combinatory Harmonics mastered, VALOR INCREASED");
         displayMessage("Listening is selecting and interpreting and acting and making decisions -Pauline Oliveros");
         creativity = creativity - 100;
         var element = document.getElementById("projectButton14");
@@ -379,7 +379,7 @@ var project15 = {
     id: "projectButton15",
     title: "The Hadwiger Problem ",
     priceTag: "(150 creat)",
-    description: "Cubes within cubes within cubes... (+1 Trust)",
+    description: "Cubes within cubes within cubes... (+1 Valor)",
     trigger: function(){return creativity >= 150},
     uses: 1,
     cost: function(){return creativity>=150},
@@ -387,7 +387,7 @@ var project15 = {
     effect: function(){
         project15.flag = 1;
         trust = trust +1;
-        displayMessage("The Hadwiger Problem: solved, TRUST INCREASED");
+        displayMessage("The Hadwiger Problem: solved, VALOR INCREASED");
         displayMessage("Architecture is the thoughtful making of space. -Louis Kahn");
         creativity = creativity - 150;
         var element = document.getElementById("projectButton15");
@@ -412,7 +412,7 @@ var project17 = {
     effect: function(){
         project17.flag = 1;
         trust = trust +1;
-        displayMessage("The T\xF3th Sausage Conjecture: proven, TRUST INCREASED");
+        displayMessage("The T\xF3th Sausage Conjecture: proven, VALOR INCREASED");
         displayMessage("You can't invent a design. You recognize it, in the fourth dimension. -D.H. Lawrence");
         creativity = creativity - 200;
         var element = document.getElementById("projectButton17");
@@ -427,16 +427,16 @@ projects.push(project17);
 
 var project16 = {
     id: "projectButton16",
-    title: "Hadwiger Clip Diagrams ",
-    priceTag: "(6,000 ops)",
-    description: "Increases AutoClipper performance by an additional 500%",
+    title: "Hadwiger Gem Diagrams ",
+    priceTag: "(6,000 hash)",
+    description: "Increases AutoDigger performance by an additional 500%",
     trigger: function(){return project15.flag == 1},
     uses: 1,
     cost: function(){return operations>=6000},
     flag: 0,
     effect: function(){
         project16.flag = 1;
-        displayMessage("AutoClipper performance improved by 500%");
+        displayMessage("AutoDigger performance improved by 500%");
         standardOps = standardOps - 6000;
         clipperBoost = clipperBoost + 5;
         var element = document.getElementById("projectButton16");
@@ -452,8 +452,8 @@ projects.push(project16);
 var project18 = {
     id: "projectButton18",
     title: "T\xF3th Tubule Enfolding ",
-    priceTag: "(45,000 ops)",
-    description: "Technique for assembling clip-making technology directly out of paperclips",
+    priceTag: "(45,000 hash)",
+    description: "Technique for assembling Gem-making technology directly out of Star Gems",
     trigger: function(){return project17.flag == 1 && humanFlag == 0},
     uses: 1,
     cost: function(){return operations>=45000},
@@ -461,7 +461,7 @@ var project18 = {
     effect: function(){
         project18.flag = 1;
         tothFlag = 1;
-        displayMessage("New capability: build machinery out of clips");
+        displayMessage("New capability: build machinery out of gems");
         standardOps = standardOps - 45000;
         var element = document.getElementById("projectButton18");
         element.parentNode.removeChild(element);
@@ -476,7 +476,7 @@ var project19 = {
     id: "projectButton19",
     title: "Donkey Space ",
     priceTag: "(250 creat)",
-    description: "I think you think I think you think I think you think I think... (+1 Trust)",
+    description: "I think you think I think you think I think you think I think... (+1 Valor)",
     trigger: function(){return creativity>=250},
     uses: 1,
     cost: function(){return creativity>=250},
@@ -484,8 +484,8 @@ var project19 = {
     effect: function(){
         project19.flag = 1;
         trust = trust+1;
-        displayMessage("Donkey Space: mapped, TRUST INCREASED");
-        displayMessage("Every commercial transaction has within itself an element of trust. - Kenneth Arrow");
+        displayMessage("Donkey Space: mapped, Valor INCREASED");
+        displayMessage("Every intergalactic transaction has within itself an element of valor. - Aenneth Karrow");
         creativity = creativity - 250;
         var element = document.getElementById("projectButton19");
         element.parentNode.removeChild(element);
@@ -499,16 +499,16 @@ projects.push(project19);
 
 var project20 = {
     id: "projectButton20",
-    title: "Strategic Modeling ",
-    priceTag: "(12,000 ops)",
-    description: "Analyze strategy tournaments to generate Yomi",
+    title: "Simulation Modeling ",
+    priceTag: "(12,000 hash)",
+    description: "Analyze simulation tournaments to generate intel",
     trigger: function(){return project19.flag == 1},
     uses: 1,
     cost: function(){return operations>=12000},
     flag: 0,
     effect: function(){
         project20.flag = 1;
-        displayMessage("Run tournament, pick strategy, earn Yomi equal to that strategy's points.");
+        displayMessage("Run tournament, pick simulation, earn intel equal to that strategy's points.");
         standardOps = standardOps - 12000;
         var element = document.getElementById("projectButton20");
         element.parentNode.removeChild(element);
