@@ -932,11 +932,11 @@ function updateStocks(){
 window.setInterval(function(){
     
     if (document.getElementById("investStrat").value=="low"){
-        riskiness = 10;
+        riskiness = 7;
     } else if (document.getElementById("investStrat").value=="med"){
-        riskiness = 6;
+        riskiness = 3;
     } else {
-        riskiness = 2;
+        riskiness = 1;
     }
     
     m = 0;
@@ -1002,7 +1002,7 @@ if (portfolioSize>0 && humanFlag == 1){
 
 var tourneyCost = 1000;
 var tourneyLvl = 1;
-var choiceANames = ["cooperate", "swerve", "macro", "fight", "bet", "raise_price", "opera", "go", "heads", "particle", "discrete", "peace", "search", "lead", "accept", "engage", "attack"]; 
+var choiceANames = ["cooperate", "dodge", "macro", "fight", "bet", "raise_price", "opera", "go", "heads", "particle", "discrete", "peace", "search", "lead", "accept", "engage", "attack"]; 
 var choiceBNames = ["defect", "straight", "micro", "back_down", "fold", "lower_price", "race", "stay", "tails", "wave", "continuous", "war", "evaluate", "follow", "reject", "deny", "decay"];
 var stratCounter = 0;
 var roundNum = 0;
@@ -1317,7 +1317,7 @@ function newTourney(){
     document.getElementById("vertStrat").innerHTML = "&nbsp";
     document.getElementById("horizStrat").innerHTML = "&nbsp";
     
-    document.getElementById("tourneyDisplay").innerHTML = "Pick strategy, run simulation, gain flux";
+    document.getElementById("tourneyDisplay").innerHTML = "Pick strategy, run simulation, gain intel";
     
     
 }
@@ -1430,7 +1430,7 @@ function declareWinner(){
         
     if (milestoneFlag < 15){    
        
-       displayMessage(strats[pick].name+" scored "+strats[pick].currentScore+" in the simulation. Flux increased by "+strats[pick].currentScore * yomiBoost);
+       displayMessage(strats[pick].name+" scored "+strats[pick].currentScore+" in the simulation. Intel increased by "+strats[pick].currentScore * yomiBoost);
            
         }
         
@@ -1438,21 +1438,21 @@ function declareWinner(){
             yomi = yomi + 20000;
             
             if (milestoneFlag < 15){ 
-                displayMessage("Selected simulation won the tournament (or tied for first). +20,000 flux");
+                displayMessage("Selected simulation won the tournament (or tied for first). +20,000 intel");
                 }
                 document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
             
             } else if (project128.flag == 1 && placeScore == strats[pick].currentScore) {
                 yomi = yomi + 15000;
                 if (milestoneFlag < 15){ 
-                displayMessage("Selected simulation finished in (or tied for) second place. +15,000 flux");
+                displayMessage("Selected simulation finished in (or tied for) second place. +15,000 intel");
                 }
                 document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
                 
             } else if (project128.flag == 1 && showScore == strats[pick].currentScore) {
                 yomi = yomi + 10000;
                 if (milestoneFlag < 15){ 
-                displayMessage("Selected simulation finished in (or tied for) third place. +10,000 flux");
+                displayMessage("Selected simulation finished in (or tied for) third place. +10,000 intel");
                 }
                 document.getElementById("yomiDisplay").innerHTML = yomi.toLocaleString();
         
@@ -1960,7 +1960,7 @@ function updateSwarm(){
         boredomFlag = 1;
         boredomLevel = 0;
             if (boredomMsg == 0) {
-            displayMessage("No debris to drill. Inactivity has caused the Rift to become bored");
+            displayMessage("No debris to process. Inactivity has caused the Rift to become bored");
             boredomMsg = 1;
             }  
         
@@ -1981,7 +1981,7 @@ function updateSwarm(){
     if (disorgCounter >= 100) {
         disorgFlag = 1;
         if (disorgMsg == 0) {
-            displayMessage("Imbalance between Tunneler and Gathering Drone levels has disorganized the Swarm");
+            displayMessage("Imbalance between Assembly and Gathering Drone levels has disorganized the Rift");
             disorgMsg = 1;
             }    
     }
@@ -1997,7 +1997,7 @@ function updateSwarm(){
         swarmGifts = swarmGifts + nextGift;
         document.getElementById("swarmGifts").innerHTML = numberCruncher(swarmGifts);
         if (milestoneFlag<15){
-            displayMessage("The swarm has generated a gift of "+nextGift+" additional computational capacity");
+            displayMessage("The Rift has generated a gift of "+nextGift+" additional computational capacity");
             }
         
 //        THE OLD WAY        
@@ -2403,9 +2403,9 @@ function lowerPrice(){
 function updateStats(){
     
     if (wire == 1){
-        document.getElementById("inchSpan").innerHTML = "inch";
+        document.getElementById("inchSpan").innerHTML = "KG";
     } else {
-        document.getElementById("inchSpan").innerHTML = "inches";
+        document.getElementById("inchSpan").innerHTML = "KGs";
     }
     
     
@@ -2776,7 +2776,7 @@ function milestoneCheck(){
     
     if (milestoneFlag == 13 && spaceFlag == 1){
         milestoneFlag = milestoneFlag + 1;
-        displayMessage("Terrestrial resources fully utilized in " + timeCruncher(ticks));    
+        displayMessage("Galactic resources fully utilized in " + timeCruncher(ticks));    
     }   
     
     if (milestoneFlag == 14 && clips>=totalMatter){
@@ -2905,7 +2905,7 @@ function increaseProbeTrust(){
     probeTrustCost = Math.floor(Math.pow(probeTrust+1, 1.47)*200);
     document.getElementById('probeTrustDisplay').innerHTML = probeTrust;
     document.getElementById('probeTrustCostDisplay').innerHTML = Math.floor(probeTrustCost).toLocaleString();
-    displayMessage("WARNING: Risk of value drift increased");
+    displayMessage("WARNING: Risk of defection increased");
 }
 
 function increaseMaxTrust(){
@@ -3282,7 +3282,7 @@ window.setInterval(function(){
     stockReportCounter++;
     if (investmentEngineFlag==1 && stockReportCounter>=10000){
         var r = (ledger+portTotal).toLocaleString();
-        displayMessage("Lifetime investment revenue report: $"+r);
+        displayMessage("Emperical trade revenue report: $"+r);
         stockReportCounter = 0;
     }
     
