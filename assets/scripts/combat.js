@@ -1,78 +1,78 @@
+let battleWIDTH=310;
+let battleHEIGHT=150;
+let battleGRID_WIDTH=31; //number of grid cells
+let battleGRID_HEIGHT=15;
+let battleINV_GRID_WIDTH = 1 / (battleWIDTH / battleGRID_WIDTH);
+let battleINV_GRID_HEIGHT = 1 / (battleHEIGHT / battleGRID_HEIGHT);
 
-var battleWIDTH=310;
-var battleHEIGHT=150;
-var battleGRID_WIDTH=31; //number of grid cells
-var battleGRID_HEIGHT=15;
-var battleINV_GRID_WIDTH = 1 / (battleWIDTH / battleGRID_WIDTH);
-var battleINV_GRID_HEIGHT = 1 / (battleHEIGHT / battleGRID_HEIGHT);
+let battleLEFTSHIPS=200;
+let battleRIGHTSHIPS=200;
 
-var battleLEFTSHIPS=200;
-var battleRIGHTSHIPS=200;
+let battleMAXSPEED = 2;
+let battleDEATH_THRESHOLD = 0.5; //used to calculate battles
+let battleLEFTCOLOR = "#ffffff"
+let battleRIGHTCOLOR = "#000000"
+let battleEXPLODECOLOR = "#ffffff"
 
-var battleMAXSPEED = 2;
-var battleDEATH_THRESHOLD = 0.5; //used to calculate battles
-var battleLEFTCOLOR = "#ffffff"
-var battleRIGHTCOLOR = "#000000"
-var battleEXPLODECOLOR = "#ffffff"
+let ships = [];
+let numShips = 0;
+let grid = new Array(battleGRID_HEIGHT);
+let numLeftShips = 0;
+let numRightShips = 0;
 
-var ships = new Array(); 
-var numShips = 0;
-var grid = new Array(battleGRID_HEIGHT);
-var numLeftShips = 0;
-var numRightShips = 0;
+let probeCombat = 0;
+let probeCombatBaseRate = .15;
+let attackSpeed = .2;
+let battleSpeed = .2;
+let attackSpeedFlag = 0;
+let attackSpeedMod = .1;
+let battles = [];
+let battleID = 0;
+let battleName = "foo";
+let battleNameFlag = 0;
+let maxBattles = 1;
+let battleClock = 0;
+let battleAlarm = 10;
+let outcomeTimer = 150;
+let drifterCombat = 1.75;
+let warTrigger = 1000000;
 
-var probeCombat = 0;
-var probeCombatBaseRate = .15;
-var attackSpeed = .2;
-var battleSpeed = .2;
-var attackSpeedFlag = 0;
-var attackSpeedMod = .1;
-var battles = [];
-var battleID = 0;
-var battleName = "foo";
-var battleNameFlag = 0;
-var maxBattles = 1;
-var battleClock = 0;
-var battleAlarm = 10;
-var outcomeTimer = 150;
-var drifterCombat = 1.75;
-var warTrigger = 1000000;
+let unitSize = 0;
+let driftersKilled = 0;
+let battleEndDelay = 0;
+let battleEndTimer = 100;
+let masterBattleClock = 0;
 
-var unitSize = 0;
-var driftersKilled = 0;
-var battleEndDelay = 0;
-var battleEndTimer = 100;
-var masterBattleClock = 0;
+let honorCount = 0;
+let threnodyTitle = "Durenstein 1";
+let bonusHonor = 0;
+let honorReward = 0;
 
-var honorCount = 0;
-var threnodyTitle = "Durenstein 1";
-var bonusHonor = 0;
-var honorReward = 0;
 
 
 //NON-CANVAS BATTLE LOGIC
 
 function checkForBattles(){
     if (drifterCount>warTrigger && probeCount > 0 && battles.length < maxBattles){
-        var r = (Math.random()*100); 
+        let r = (Math.random()*100); 
         if (r>=50){
-            if (battleFlag == 0){battleFlag = 1};
+            if (battleFlag === 0){battleFlag = 1}
             createBattle();
         }
     }
 }
 
-var battleNames = ["Aboukir", "Abensberg", "Acre", "Alba de Tormes", "la Albuera", "Algeciras Bay", "Amstetten", "Arcis-sur-Aube", "Aspern-Essling", "Jena-Auerstedt", "Arcole", "Austerlitz", "Badajoz", "Bailen", "la Barrosa", "Bassano", "Bautzen", "Berezina", "Bergisel", "Borodino", "Burgos", "Bucaco", "Cadiz", "Caldiero", "Castiglione", "Castlebar", "Champaubert", "Chateau-Thierry", "Copenhagen", "Corunna", "Craonne", "Dego", "Dennewitz", "Dresden", "Durenstein", "Eckmuhl", "Elchingen", "Espinosa de los Monteros", "Eylau", "Cape Finisterre", "Friedland", "Fuentes de Onoro", "Gevora River", "Gerona", "Hamburg", "Haslach-Jungingen", "Heilsberg", "Hohenlinden", "Jena-Auerstedt", "Kaihona", "Kolberg", "Landshut", "Leipzig", "Ligny", "Lodi", "Lubeck", "Lutzen", "Marengo", "Maria", "Medellin", "Medina de Rioseco", "Millesimo", "Mincio River", "Mondovi", "Montebello", "Montenotte", "Montmirail", "Mount Tabor", "The Nile", "Novi", "Ocana", "Cape Ortegal", "Orthez", "Pancorbo", "Piave River", "The Pyramids", "Quatre Bras", "Raab", "Raszyn", "Rivoli", "Rolica", "La Rothiere", "Rovereto", "Saalfeld", "Schongrabern", "Salamanca", "Smolensk", "Somosierra", "Talavera", "Tamames", "Trafalgar", "Trebbia", "Tudela", "Ulm", "Valls", "Valmaseda", "Valutino", "Vauchamps", "Vimeiro", "Vitoria", "Wagram", "Waterloo", "Wavre", "Wertingen", "Zaragoza"];
+let battleNames = ["Aboukir", "Abensberg", "Acre", "Alba de Tormes", "la Albuera", "Algeciras Bay", "Amstetten", "Arcis-sur-Aube", "Aspern-Essling", "Jena-Auerstedt", "Arcole", "Austerlitz", "Badajoz", "Bailen", "la Barrosa", "Bassano", "Bautzen", "Berezina", "Bergisel", "Borodino", "Burgos", "Bucaco", "Cadiz", "Caldiero", "Castiglione", "Castlebar", "Champaubert", "Chateau-Thierry", "Copenhagen", "Corunna", "Craonne", "Dego", "Dennewitz", "Dresden", "Durenstein", "Eckmuhl", "Elchingen", "Espinosa de los Monteros", "Eylau", "Cape Finisterre", "Friedland", "Fuentes de Onoro", "Gevora River", "Gerona", "Hamburg", "Haslach-Jungingen", "Heilsberg", "Hohenlinden", "Jena-Auerstedt", "Kaihona", "Kolberg", "Landshut", "Leipzig", "Ligny", "Lodi", "Lubeck", "Lutzen", "Marengo", "Maria", "Medellin", "Medina de Rioseco", "Millesimo", "Mincio River", "Mondovi", "Montebello", "Montenotte", "Montmirail", "Mount Tabor", "The Nile", "Novi", "Ocana", "Cape Ortegal", "Orthez", "Pancorbo", "Piave River", "The Pyramids", "Quatre Bras", "Raab", "Raszyn", "Rivoli", "Rolica", "La Rothiere", "Rovereto", "Saalfeld", "Schongrabern", "Salamanca", "Smolensk", "Somosierra", "Talavera", "Tamames", "Trafalgar", "Trebbia", "Tudela", "Ulm", "Valls", "Valmaseda", "Valutino", "Vauchamps", "Vimeiro", "Vitoria", "Wagram", "Waterloo", "Wavre", "Wertingen", "Zaragoza"];
 
-var battleNumbers = [];
+let battleNumbers = [];
 
-for (i=0; i<battleNames.length; i++){
+for (let i=0; i<battleNames.length; i++){
     battleNumbers.push(1);
 }
 
 function generateBattleName(){
-    var x = Math.floor(Math.random()*battleNames.length);
-    var name = battleNames[x] + " " + battleNumbers[x];
+    let x = Math.floor(Math.random()*battleNames.length);
+    let name = battleNames[x] + " " + battleNumbers[x];
     battleNumbers[x] = battleNumbers[x] + 1;
     return name
 }
@@ -82,21 +82,21 @@ function generateBattleName(){
 
 function battleWrite(newBattle){
     
-    var element = document.getElementById("battleReportsDiv"); 
-    var reference = document.getElementById("battleListTop");
+    let element = document.getElementById("battleReportsDiv"); 
+    let reference = document.getElementById("battleListTop");
     
-    var newBattleReport = document.createElement("div");
+    let newBattleReport = document.createElement("div");
     newBattleReport.setAttribute("id", "battleReport"+newBattle.id);
     
-    var battleNameP = document.createElement("p");
+    let battleNameP = document.createElement("p");
     battleNameP.setAttribute("class", "clean");
     
-    if (battleNameFlag == 0){
+    if (battleNameFlag === 0){
         battleName = document.createTextNode("Battle "+newBattle.id);
 
         }
     
-    if (battleNameFlag == 1){
+    if (battleNameFlag === 1){
         battleName = document.createTextNode(generateBattleName());
         }
     
@@ -104,48 +104,48 @@ function battleWrite(newBattle){
     
     newBattleReport.appendChild(battleNameP);
     
-    var battleDetailsP = document.createElement("p");
+    let battleDetailsP = document.createElement("p");
     battleDetailsP.setAttribute("class", "clean");
     
-    var clipsLabelSpan = document.createElement("span");
+    let clipsLabelSpan = document.createElement("span");
     clipsLabelSpan.style.fontWeight = "bold";
     
-    var clipsLabel = document.createTextNode("Clips: ");
+    let clipsLabel = document.createTextNode("Clips: ");
     clipsLabelSpan.appendChild(clipsLabel);
     
     battleDetailsP.appendChild(clipsLabelSpan);
     
-    var clipProbeCountSpan = document.createElement("span");
+    let clipProbeCountSpan = document.createElement("span");
     clipProbeCountSpan.setAttribute("id", "battle"+newBattle.id+"clipCount")
-    var clipProbeCount = document.createTextNode(numberCruncher(newBattle.clipProbes));
+    let clipProbeCount = document.createTextNode(numberCruncher(newBattle.clipProbes));
     clipProbeCountSpan.appendChild(clipProbeCount);
     battleDetailsP.appendChild(clipProbeCountSpan);
     
-    var driftersLabelSpan = document.createElement("span");
+    let driftersLabelSpan = document.createElement("span");
     driftersLabelSpan.style.fontWeight = "bold";
     
-    var driftersLabel = document.createTextNode(" Drifters: ");
+    let driftersLabel = document.createTextNode(" Drifters: ");
     driftersLabelSpan.appendChild(driftersLabel);
     
     battleDetailsP.appendChild(driftersLabelSpan);
     
-    var drifterProbeCountSpan = document.createElement("span");
+    let drifterProbeCountSpan = document.createElement("span");
     drifterProbeCountSpan.setAttribute("id", "battle"+newBattle.id+"drifterCount")    
-    var drifterProbeCount = document.createTextNode(numberCruncher(newBattle.drifterProbes));
+    let drifterProbeCount = document.createTextNode(numberCruncher(newBattle.drifterProbes));
     drifterProbeCountSpan.appendChild(drifterProbeCount);
     battleDetailsP.appendChild(drifterProbeCountSpan);
     
     newBattleReport.appendChild(battleDetailsP);
     
-    var territoryP = document.createElement("p");
+    let territoryP = document.createElement("p");
     territoryP.setAttribute("class", "clean");
-    var t = (newBattle.territory/availableMatter);
-    var territoryDisplay = document.createTextNode("Territory at stake: "+Math.ceil(t*100)+"% of available matter");
+    let t = (newBattle.territory/availableMatter);
+    let territoryDisplay = document.createTextNode("Territory at stake: "+Math.ceil(t*100)+"% of available matter");
     territoryP.appendChild(territoryDisplay);
     
     newBattleReport.appendChild(territoryP);
    
-    var line = document.createElement("hr");
+    let line = document.createElement("hr");
     newBattleReport.appendChild(line);
     
     reference.insertBefore(newBattleReport, reference.childNodes[0]);
@@ -154,23 +154,23 @@ function battleWrite(newBattle){
 
 function updateBattles(){
     
-    var combatEffectiveness = probeCombatBaseRate;
+    let combatEffectiveness = probeCombatBaseRate;
     
-    if (battleNameFlag == 1) {
+    if (battleNameFlag === 1) {
         combatEffectiveness = combatEffectiveness*2
     }
     
-    if (attackSpeedFlag == 1){
+    if (attackSpeedFlag === 1){
         battleSpeed = attackSpeed * .85;
         if (battleSpeed > .99){
             battleSpeed = .99;
         }
     }
     
-    for(var i = 0; i < battles.length; i++){
+    for(let i = 0; i < battles.length; i++){
         r = Math.random();
         if (r>=battleSpeed) {
-            var clipCasualties = battles[i].drifterProbes * drifterCombat * (1-battleSpeed);
+            let clipCasualties = battles[i].drifterProbes * drifterCombat * (1-battleSpeed);
                 if (clipCasualties>battles[i].clipProbes){
                     clipCasualties=battles[i].clipProbes;
                     }
@@ -183,7 +183,7 @@ function updateBattles(){
 //            document.getElementById('battle'+battles[i].id+"clipCount").innerHTML = numberCruncher(battles[i].clipProbes);
             
             } else {
-            var drifterCasualties = battles[i].clipProbes * Math.pow(probeCombat, 1.7) * combatEffectiveness;
+            let drifterCasualties = battles[i].clipProbes * Math.pow(probeCombat, 1.7) * combatEffectiveness;
                 if (drifterCasualties>battles[i].drifterProbes){
                     drifterCasualties=battles[i].drifterProbes;
                     }
@@ -198,16 +198,16 @@ function updateBattles(){
             battles[i].victory = true;
         }
     
-        if (battles[i].clipProbes < 1 && battles[i].victory == false){
+        if (battles[i].clipProbes < 1 && battles[i].victory === false){
             battles[i].loss = true;
         }
 
-        if (battles[i].loss == true && battles[i].whiteFlag == 0){
+        if (battles[i].loss === true && battles[i].whiteFlag === 0){
             availableMatter = availableMatter - battles[i].territory;
             battles[i].whiteFlag = 1;
         }     
         
-        if (battles[i].loss == true){
+        if (battles[i].loss === true){
             
 //            document.getElementById("battleReport"+battles[i].id).style.backgroundColor = "LightGrey";
             
@@ -217,7 +217,7 @@ function updateBattles(){
             }
         }
         
-        if (battles[i].victory == true){
+        if (battles[i].victory === true){
             battles[i].reportCount++;
             if (battles[i].reportCount > outcomeTimer){
                 battles[i].garbageFlag = 1;
@@ -227,9 +227,9 @@ function updateBattles(){
 }
 
 function battleCleanUp(){
-    for(var i = battles.length-1; i >= 0; i--){
-        if (battles[i].garbageFlag == 1){
-            var element = document.getElementById('battleReport'+battles[i].id);
+    for(let i = battles.length-1; i >= 0; i--){
+        if (battles[i].garbageFlag === 1){
+            let element = document.getElementById('battleReport'+battles[i].id);
             element.parentNode.removeChild(element);
             battles.splice(i,1);
         }
@@ -243,21 +243,21 @@ function updateBattleDisplay(battle){
     
     
 
- var element = document.getElementById("battleListTop"); 
+ let element = document.getElementById("battleListTop"); 
     
-    var newBattle = document.createElement("div");
+    let newBattle = document.createElement("div");
     newBattle.setAttribute("id", battle.id);
     element.appendChild(newBattle, element.firstChild);
     
-    var span = document.createElement("span");
+    let span = document.createElement("span");
     span.setAttribute("class", "clean");    
     span.style.fontWeight = "bold";
     newBattle.appendChild(span);
     
-    var hed = document.createTextNode("Combatants");
+    let hed = document.createTextNode("Combatants");
     span.appendChild(hed);    
     
-    var clipsCount = document.createElement("span");
+    let clipsCount = document.createElement("span");
     clipsCount = battle.clipProbes;
     element.appendChild(span);
     
@@ -270,10 +270,10 @@ function updateBattleDisplay(battle){
 
 function Battle(){
     
-  var canvas;
-  var context;
-  var interval;
-  var sign;
+  let canvas;
+  let context;
+  let interval;
+  //let sign;
     
   battleRestart();    
 	
@@ -285,12 +285,12 @@ function Battle(){
 		canvas.width = battleWIDTH;
 		canvas.height = battleHEIGHT;
         
-		var interval = setInterval(Update, 16);
+		interval = setInterval(Update, 16);
         
 		battleRestart();
 	}
 
-	var Update = function(){
+	let Update = function(){
 		
         ClearFrame();
         UpdateGrid();
@@ -303,13 +303,13 @@ function checkForBattleEnd(){
     
     if (battles.length>0){
     
-      if (numLeftShips == 0 || numRightShips == 0){
+      if (numLeftShips === 0 || numRightShips === 0){
           
-          if (project121.flag == 1){
+          if (project121.flag === 1){
             document.getElementById("victoryDiv").style.visibility = "visible";    
          
-          if (numLeftShips == 0){
-            if (honorCount == 0){  
+          if (numLeftShips === 0){
+            if (honorCount === 0){  
             bonusHonor = 0;    
             honor = honor - battleLEFTSHIPS;
             honorCount =  1;   
@@ -321,13 +321,13 @@ function checkForBattleEnd(){
             threnodyTitle = battleName;
             }
               
-          if (numRightShips == 0){
-            if (honorCount == 0){  
+          if (numRightShips === 0){
+            if (honorCount === 0){  
             honorReward = battleRIGHTSHIPS + bonusHonor;     
             document.getElementById("honorAmount").innerHTML = honorReward;
             honor = honor + honorReward;    
                 
-                if (project134.flag == 1){    
+                if (project134.flag === 1){    
                 bonusHonor = bonusHonor + 10;
                 }      
                 
@@ -377,15 +377,15 @@ function battleRestart(){
     numLeftShips = 0;
     numRightShips = 0;
     numShips=0;	
-    ships = new Array();
+    ships = [];
     grid = new Array(battleGRID_HEIGHT);
       
     //reset the grid
       
-    var row, col;
+    let row, col;
 		for (row = 0; row < battleGRID_HEIGHT; row++)
 		{
-      grid[row]= new Array();
+      grid[row]= [];
 			for (col = 0; col < battleGRID_WIDTH; col++)
 			{
 		    grid[row][col]= new Cell();
@@ -396,8 +396,8 @@ function battleRestart(){
     //create ships... alternate left team and right team so there's no advantage
     //for array position
       
-    var leftShipTurn = false;
-    var i=0;
+    let leftShipTurn = false;
+    let i=0;
     while ((numLeftShips<battleLEFTSHIPS)||(numRightShips<battleRIGHTSHIPS)){
       if (leftShipTurn){
         ships[i] = new Ship(0);
@@ -416,12 +416,12 @@ function battleRestart(){
 }        
     
   
-  var UpdateGrid = function(){
+  let UpdateGrid = function(){
     
     //First clear grid out
       
-    var p;
-		var row,col;
+    let p;
+		let row,col;
 		for (row = 0; row < battleGRID_HEIGHT; row++){
 			for (col = 0; col < battleGRID_WIDTH; col++){
 				grid[row][col].ships.length=0;
@@ -431,7 +431,7 @@ function battleRestart(){
 		
     //Update Grid cells with ships in each cell
       
-		for (i = 0; i < numShips; i++){
+		for (let i = 0; i < numShips; i++){
 
 			p = ships[i];
 			if (!ships[i].alive) continue;
@@ -459,23 +459,23 @@ function battleRestart(){
   }
 	
 
-  var DoCombat = function(){
+  let DoCombat = function(){
       
-    var pX = probeCombat * probeCombatBaseRate; 
+    let pX = probeCombat * probeCombatBaseRate; 
       
-//        if (battleNameFlag == 1){
+//        if (battleNameFlag === 1){
 //        pX = pX*2;
 //        }
       
-    var dX = drifterCombat;
+    let dX = drifterCombat;
       
-    var p;
-    var row,col,i;
-    var numLeftTeam, numRightTeam;
-    var diceRoll;
-    var ooda = 0;
+    let p;
+    let row,col,i;
+    let numLeftTeam, numRightTeam;
+    let diceRoll;
+    let ooda = 0;
       
-      if (attackSpeedFlag == 1){
+      if (attackSpeedFlag === 1){
           ooda = probeSpeed * .2;
       }
 
@@ -495,18 +495,18 @@ function battleRestart(){
         for (i=0;i<grid[row][col].numShips;i++){
           p = grid[row][col].ships[i];
           if (!p.alive) continue;
-          if (p.team == 0) numLeftTeam++;
+          if (p.team === 0) numLeftTeam++;
           else numRightTeam++;
         }
                 
-        if ((numLeftTeam == 0)||(numRightTeam==0)) continue;
+        if ((numLeftTeam === 0)||(numRightTeam===0)) continue;
         
         //now we have at least one ship of each team in this cell. 
         //roll a weighted die to see if each ship gets killed
                 
         for (i=0;i<grid[row][col].numShips;i++){
           p = grid[row][col].ships[i];
-          if (p.team == 0) {
+          if (p.team === 0) {
               diceRoll = Math.random() * dX * ((numRightTeam/numLeftTeam)*.5);
               battleDEATH_THRESHOLD = battleDEATH_THRESHOLD + ooda;
               // console.log("Probe Death Check. dX = "+dX+". diceRoll = "+diceRoll+". deathThreshold = "+battleDEATH_THRESHOLD);
@@ -517,7 +517,7 @@ function battleRestart(){
               }
           if (diceRoll > battleDEATH_THRESHOLD) {
             p.alive = false;
-            if (p.team==0) {
+            if (p.team===0) {
                 numLeftShips--;
                 if (unitSize>probeCount){unitSize=probeCount;}
                 probeCount = probeCount - unitSize;
@@ -543,10 +543,10 @@ function battleRestart(){
       
   }
   
-	var MoveShips = function(){
+	let MoveShips = function(){
 
-        var i, p;
-        var centroid = FindCentroid(); 
+        let i, p;
+        let centroid = FindCentroid(); 
 		
 		for (i = 0; i < numShips; i++){    
 			p = ships[i];
@@ -579,13 +579,13 @@ function battleRestart(){
     
 	}
 	
-  var FindCentroid=function(){
+  let FindCentroid=function(){
       
     //find the statistical center of all the ships
       
-    var i, p;
-    var centroid = { x: 0, y: 0};
-    var shipsAlive = 0;
+    let i;
+    let centroid = { x: 0, y: 0};
+    let shipsAlive = 0;
       
     for (i = 0; i < numShips; i++){    
       if (!ships[i].alive) continue;
@@ -603,23 +603,23 @@ function battleRestart(){
     return centroid;
   }
 	
-	var MoveSingleShip = function(p, centroid){
+	let MoveSingleShip = function(p, centroid){
     
 		//accelerate to group centroid
     p.vx += (centroid.x-p.x)*0.001;
     p.vy += (centroid.y-p.y)*0.001;
     
     //accelerate to enemy ships in adjacent grid cells
-    var row,col,i;
-    var othership;
-    var teammatesConsidered=0;
+    let row,col,i;
+    let othership;
+    let teammatesConsidered=0;
     for (row=Math.max(p.gy-1,0); row<Math.min(p.gy+2,battleGRID_HEIGHT);row++){
       for(col=Math.max(p.gx-1,0);col<Math.min(p.gx+2,battleGRID_WIDTH);col++){
         if (grid[row][col].ships.length<2) continue;
         for (i=0;i<grid[row][col].ships.length; i++){
           othership = grid[row][col].ships[i];
           if (!othership.alive) continue; //ignore dead ships
-          if (othership.team == p.team) { 
+          if (othership.team === p.team) { 
             teammatesConsidered++;
 
             if (teammatesConsidered>3) continue;//don't fixate on teammates
@@ -675,15 +675,16 @@ function battleRestart(){
 	}
 	
 	//Clear the screen, 
-//	var MouseDown = function(e) {
+//	let MouseDown = function(e) {
 //		e.preventDefault();
 //		battleRestart();
 //	}
 	
-	var ClearFrame = function(){
-		canvas.width = canvas.width
+	let ClearFrame = function(){
+        let tempWidth = canvas.width
+		canvas.width = tempWidth
         
-//        var ctx = canvas.getContext("2d");
+//        let ctx = canvas.getContext("2d");
 //        ctx.font = "16px Times";
 //        ctx.fillStyle="white";
 //        ctx.fillText("Combat",10,20);
@@ -694,7 +695,7 @@ function battleRestart(){
 
 //Grid cells for quicker grouping
 function Cell(){
-	this.ships = new Array();
+	this.ships = [];
 	this.numShips = 0;
 	this.add = function(ship){
 		this.ships[this.numShips++] = ship;
@@ -704,7 +705,7 @@ function Cell(){
 function Ship(team){
 	
 	this.alive = true;
-	this.color;
+	this.color = null;
 	this.team = team;
   this.framesDead = 0;
    //grid cell coord - we'll set this later
@@ -741,19 +742,19 @@ function createBattle(){
         unitSize = drifterCount/100;
     }
     
-    if (unitSize<1) {unitSize=1};
+    if (unitSize<1) {unitSize=1}
     document.getElementById('battleScale').innerHTML = numberCruncher(unitSize,0);
     
         
-    var rr = Math.random()*drifterCount;
-    if (rr<1){rr=1};
-    var ss = Math.random()*probeCount;
-    if (ss<1){ss=1};
-    var tt = Math.random()*availableMatter;
+    let rr = Math.random()*drifterCount;
+    if (rr<1){rr=1}
+    let ss = Math.random()*probeCount;
+    if (ss<1){ss=1}
+    let tt = Math.random()*availableMatter;
     
         battleID++;
     
-        var newBattle = {
+        let newBattle = {
         id: battleID,
         clipProbes: ss,
         drifterProbes: rr,
@@ -768,8 +769,8 @@ function createBattle(){
     battleLEFTSHIPS = Math.ceil(ss / 1000000);
     if (battleLEFTSHIPS>200){
         battleLEFTSHIPS=200;
-    } if (battleLEFTSHIPS == 200){
-        var hinder = Math.random();
+    } if (battleLEFTSHIPS === 200){
+        let hinder = Math.random();
         if (hinder < .50) {
             battleLEFTSHIPS = Math.ceil(Math.random()*175);
         }
@@ -780,11 +781,11 @@ function createBattle(){
         battleRIGHTSHIPS=200;
     }
         
-    Battle();
+    new Battle();
     
     battleName = ("Drifter Attack "+newBattle.id);
     
-        if (battleNameFlag == 1){
+        if (battleNameFlag === 1){
         battleName = generateBattleName();
         }
     
@@ -796,7 +797,7 @@ function createBattle(){
     
     }
 
-var app = new Battle();
+let app = new Battle();
 app.initialize();
     
 

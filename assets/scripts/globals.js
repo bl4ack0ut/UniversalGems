@@ -39,7 +39,6 @@ var boostLvl = 0;
 var wirePurchase = 0;
 var wireSupply = 1000;
 var marketingEffectiveness = 1;
-var marketingEffectiveness = 1;
 var milestoneFlag = 0;
 var bankroll = 0;
 var fib1 = 2;
