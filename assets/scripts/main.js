@@ -246,7 +246,7 @@ function longBlink(elemID) {
     }
     blinkInterval[elemID] = setInterval(function () {
         longToggleVisibility(elemID)
-    }, 100);
+    }, 32);
 }
 
 function longToggleVisibility(elemID) {
@@ -311,7 +311,7 @@ function blink(elemID) {
     }
     blinkInterval[elemID] = setInterval(function () {
         toggleVisibility(elemID)
-    }, 300);
+    }, 30);
 }
 
 function toggleVisibility(elemID) {
