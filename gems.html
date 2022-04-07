@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <title>Shattered Eon Gems</title>
     <link rel="stylesheet" type="text/css" href="assets/css/interface.css"/>
+    <link href="http://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
 </head>
 
 
 <body>
+    <style>
+        @import url('http://fonts.cdnfonts.com/css/common-pixel');
+        body {
+          background-image: url('assets/images/playBG.png');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          background-size: 100% 100%
+        }
+        </style>
 
 <div id="page">
 
@@ -19,7 +30,7 @@
     </div>
 
     <div id="consoleDiv">
-
+        
         <p class="consoleOld">
             <span>&nbsp;.&nbsp;</span><span id="readout5">Booting Simulation</span><br/>
             <span>&nbsp;.&nbsp;</span><span id="readout4"></span>System Checks\\\...100%<br/>
@@ -32,6 +43,7 @@
         </p>
 
     </div>
+    
 
     <div id="topDiv">
 
@@ -41,6 +53,7 @@
 
         </div>
         <div class="toolTip">
+            
             <span id="clipCountCrunched" class="toolTipText">total  produced</span>
             <h2>Star Gems: <span id="clips">0</span></h2>
         </div>
