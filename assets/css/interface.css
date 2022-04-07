@@ -1,9 +1,10 @@
 html *
 {
-   font-size: 1em !important;
-   color: rgb(41, 226, 24) !important;
-   font-family: 'Common Pixel' !important;
-   lineHeight: 1em;
+   font-size: 10px !important;
+   color: #91db69 !important;
+   font-family: 'Digitalix', sans-serif !important;
+   line-Height: 15px;
+   
 }
 
 body {
@@ -706,7 +707,7 @@ p.hypnoDrone {
    text-shadow: #cccccc 0 1px 0;
    color: #000000;
    font-size: 16px;
-   font-family: helvetica, serif;
+   font-family: 'Digitalix', sans-serif;
    text-decoration: none;
    vertical-align: middle;
    outline: none;
@@ -742,9 +743,9 @@ p.hypnoDrone {
 }
 
 .button2 {
-   border: 1px solid #1a1a1a;
+   border: 3px solid #1a1a1a;
    background: #CDDF6C;
-   outline: 3px solid #fb6b1d;
+   outline: 2px solid #fb6b1d;
     
    background: -webkit-gradient(linear, left top, left bottom, from(#fb6b1d
    ), to(#cccccc));
@@ -764,7 +765,7 @@ p.hypnoDrone {
     0%, #fb6b1d
     100%);
     
-   padding: 2px 4px;
+   padding: 5px 5px;
    -webkit-border-radius: 2px;
    -moz-border-radius: 2px;
    border-radius: 2px;
@@ -774,7 +775,7 @@ p.hypnoDrone {
    text-shadow: #cccccc 0 1px 0;
    color: #000000;
    font-size: 11px;
-   font-family: helvetica, serif;
+   font-family: 'Digitalix', sans-serif;
    text-decoration: none;
    vertical-align: middle;
    
@@ -799,7 +800,7 @@ p.hypnoDrone {
    background: -ms-linear-gradient(top, #595959, #d9d9d9);
    background: -o-linear-gradient(top, #595959, #d9d9d9);
    background-image: -ms-linear-gradient(top, #595959 0%, #d9d9d9 100%);
-   
+   font-family: 'Digitalix', sans-serif;
    color: #444444;
    }
 
