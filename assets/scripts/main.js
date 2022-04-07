@@ -239,36 +239,40 @@ document.getElementById("hypnoDroneEventDiv").style.display = "none";
 longBlinkCounter = 0;
 
 function longBlink(elemID) {
-    window.handle = setInterval(function () {
+    elemCounter[elemID] = 0;
+    blinkInterval.push(elemID)
+    if (blinkInterval[elemID]) {
+        clearInterval(blinkInterval[elemID]);
+    }
+    blinkInterval[elemID] = setInterval(function () {
         longToggleVisibility(elemID)
-    }, 32);
+    }, 100);
 }
 
 function longToggleVisibility(elemID) {
-    longBlinkCounter++;
-    let handle = setInterval(function () {
-        longToggleVisibility(elemID)
-    }, 32);
-    if (longBlinkCounter > 10 && longBlinkCounter < 20) {
+
+    elemCounter[elemID]++;
+
+    if (elemCounter[elemID] > 10 && elemCounter[elemID] < 20) {
         document.getElementById("hypnoDroneText").innerHTML = "Engage";
     }
 
-    if (longBlinkCounter > 60 && longBlinkCounter < 80) {
+    if (elemCounter[elemID] > 60 && elemCounter[elemID] < 80) {
         document.getElementById("hypnoDroneText").innerHTML = "<br /><br /><br />Engage";
     }
 
-    if (longBlinkCounter > 90 && longBlinkCounter < 110) {
+    if (elemCounter[elemID] > 90 && elemCounter[elemID] < 110) {
         document.getElementById("hypnoDroneText").innerHTML = "<br />Engage";
     }
 
-    if (longBlinkCounter > 110) {
+    if (elemCounter[elemID] > 110) {
         document.getElementById("hypnoDroneText").innerHTML = "Engage<br/>the<br/>Rift<br/>Visitors";
     }
 
-    if (longBlinkCounter >= 240) {
+    if (elemCounter[elemID] >= 240) {
         console.log("weed wizzard");
-        clearInterval(handle);
-        longBlinkCounter = 0;
+        clearInterval(blinkInterval[elemID]);
+        elemCounter[elemID] = 0;
         document.getElementById(elemID).style.display = "none";
     } else {
         if (document.getElementById(elemID).style.display !== "") {
@@ -300,16 +304,22 @@ function displayMessage(msg) {
 // BLINK
 
 function blink(elemID) {
-    window.handle = setInterval(function () {
+    elemCounter[elemID] = 0;
+    blinkInterval.push(elemID)
+    if (blinkInterval[elemID]) {
+        clearInterval(blinkInterval[elemID]);
+    }
+    blinkInterval[elemID] = setInterval(function () {
         toggleVisibility(elemID)
-    }, 30);
+    }, 300);
 }
 
 function toggleVisibility(elemID) {
-    blinkCounter = blinkCounter + 1;
-    if (blinkCounter >= 12) {
-        clearInterval(window.handle);
-        blinkCounter = 0;
+    elemCounter[elemID]++;
+    if (elemCounter[elemID] >= 12) {
+        clearInterval(blinkInterval[elemID]);
+        console.log(elemID+' timer cleared')
+        elemCounter[elemID] = 0;
         document.getElementById(elemID).style.visibility = "visible";
     } else {
         if (document.getElementById(elemID).style.visibility !== "hidden") {
