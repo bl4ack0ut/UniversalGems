@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <title>Shattered Eon Gems</title>
     <link rel="stylesheet" type="text/css" href="assets/css/interface.css"/>
+    <link href="http://fonts.cdnfonts.com/css/digitalix')" rel="stylesheet">
 </head>
 
 
 <body>
+    <style>
+        @import url('http://fonts.cdnfonts.com/css/digitalix');
+        body {
+          background-image: url('assets/images/playBG.png');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          background-size: 100% 100%
+        }
+        </style>
 
 <div id="page">
 
@@ -19,7 +30,7 @@
     </div>
 
     <div id="consoleDiv">
-
+        
         <p class="consoleOld">
             <span>&nbsp;.&nbsp;</span><span id="readout5">Booting Simulation</span><br/>
             <span>&nbsp;.&nbsp;</span><span id="readout4"></span>System Checks\\\...100%<br/>
@@ -32,6 +43,7 @@
         </p>
 
     </div>
+    
 
     <div id="topDiv">
 
@@ -41,6 +53,7 @@
 
         </div>
         <div class="toolTip">
+            
             <span id="clipCountCrunched" class="toolTipText">total  produced</span>
             <h2>Star Gems: <span id="clips">0</span></h2>
         </div>
@@ -316,42 +329,6 @@
 
         <br/>
 
-
-        <button id="save1Button" onclick="save1()">SAVE SLOT 1</button>
-        <button id="load1Button" onclick="load1()">LOAD SLOT 1</button>
-        <br/>
-        <button id="save2Button" onclick="save2()">SAVE SLOT 2</button>
-        <button id="load2Button" onclick="load2()">LOAD SLOT 2</button>
-        <br/>
-        <button id="resetButton" onclick="reset()">RESET ALL PROGRESS</button>
-        <br/>
-
-        <button id="freeClipsButton" onclick="cheatClips()">Free Gems</button>
-        <br/>
-        <button id="freeMoneyButton" onclick="cheatMoney()">Free Credits</button>
-        <br/>
-        <button id="freeTrustButton" onclick="cheatTrust()">Free Valor</button>
-        <br/>
-        <button id="freeOpsButton" onclick="cheatOps()">Free Hash</button>
-        <br/>
-        <button id="freeCreatButton" onclick="cheatCreat()">Free Creativity</button>
-        <br/>
-        <button id="freeYomiButton" onclick="cheatYomi()">Free Intel</button>
-        <br/>
-        <button id="resetPrestige" onclick="resetPrestige()">Reset Prestige</button>
-        <br/>
-
-        <button id="destroyAllHumansButton" onclick="cheatHypno()">Destroy all Humans</button>
-        <br/>
-        <button id="freePrestigeU" onclick="cheatPrestigeU()">Free Prestige U</button>
-        <button id="freePrestigeS" onclick="cheatPrestigeS()">Free Prestige S</button>
-        <button id="debugBattleNumbers" onclick="setB()">Set Battle Number 1 to 7</button>
-        <br/>
-        <button id="availMatterZero" onclick="zeroMatter()">Set Avail Matter to 0</button>
-        <br/>
-
-
-    </div>
 
     <!--Right Column-->
 
