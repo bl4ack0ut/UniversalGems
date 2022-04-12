@@ -7,6 +7,16 @@ html *
    
 }
 
+#businessDiv {
+    margin-top: 5px;
+    line-height: 2rem;
+}
+
+#manufacturingDiv{
+    margin-top: 5px;
+    line-height: 2rem;
+}
+
 body {
     background-color: #9BABB2;
     background-repeat:no-repeat;
