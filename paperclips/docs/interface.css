@@ -309,7 +309,7 @@ canvas {
   margin-left: 10px;
 }
 #rightColumn {
-  float: left;
+  float: right;
   width: 320px;
   margin-left: 10px;    
 }

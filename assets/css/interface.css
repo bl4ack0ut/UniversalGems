@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'Digitalix';
+    src: url('../fonts/Digitalix.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html *
 {
    font-size: 10px !important;
    color: #0eaf9b !important;
    font-family: 'Digitalix', sans-serif !important;
    line-Height: 15px;
-   
+   text-transform: uppercase;
 }
 
 body {
@@ -279,7 +286,7 @@ canvas {
   display: block;
     width: 310px;
   height: 150px;
-    margin: 0 auto 10px;
+    margin: 0 auto 10px auto;
     background-color: #808080;
 }
 
