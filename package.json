@@ -2,5 +2,13 @@
   "name": "UniversalGems-main",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "@watch:sass ",
+    "build:sass": "node-sass -w -r scss/ -o assets/css --output-style compressed",
+    "watch:sass": "npm run build:sass && npm run build:sass -- -w"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
 }
