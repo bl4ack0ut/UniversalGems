@@ -823,7 +823,7 @@ function displayProjects(project) {
         project.effect()
     };
 
-    project.element.setAttribute("class", "projectButton");
+    project.element.setAttribute("class", "projectButton col-md-6");
     projectListTopElement.appendChild(project.element, projectListTopElement.firstChild);
 
     var span = document.createElement("span");

@@ -1,0 +1,24 @@
+.panel{
+  border-radius:13px;
+  border: 2px solid $green;
+  background: $blue-dark ;
+  .panel-title{
+    border-radius:8px 8px 0 0;
+    background: $green;
+    color: white;
+    padding: 15px;
+  }
+  .panel-content{
+    padding: 15px;
+    color: $green;
+  }
+  &-orange{
+    border-color: $orange;
+    .panel-title{
+      background: $orange;
+    }
+    .panel-content{
+      color: $orange;
+    }
+  }
+}
