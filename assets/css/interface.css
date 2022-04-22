@@ -653,7 +653,7 @@ p.hypnoDrone {
 
 .projectButton {
     display: block;
-    height: 60px;
+    height: 100px;
     width: 275px;
     background: #c8c8c8;
     border: 1px solid rgba(0, 0, 0, 1);
@@ -663,7 +663,7 @@ p.hypnoDrone {
 
 .projectButton:hover {
     display: block;
-    height: 60px;
+    height: 100px;
     width: 275px;
     background: #c8c8c8;
     border: 1px solid rgba(0, 0, 0, 0.25);
@@ -671,7 +671,7 @@ p.hypnoDrone {
 
 .projectButton:active {
     display: block;
-    height: 60px;
+    height: 100px;
     width: 275px;
     background: #d1d1d1;
     border: 1px solid rgba(0, 0, 0, 1);
